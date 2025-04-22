@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>i am the glorious Mindinu | Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    #p5-canvas {
+      z-index: -1;
+    }
+  </style>
+</head>
+<body class="relative text-white bg-black min-h-screen font-sans">
+
+  <!-- p5.js canvas -->
+  <script>
+    let particles = [];
+
+    function setup() {
+      let cnv = createCanvas(window.innerWidth, window.innerHeight);
+      cnv.id("p5-canvas");
+      cnv.position(0, 0);
+      cnv.style('position', 'fixed');
+      for (let i = 0; i < 100; i++) {
+        particles.push({
+          x: random(width),
+          y: random(height),
+          r: random(2, 5),
+          dx: random(-1, 1),
+          dy: random(-1, 1)
+        });
+      }
+    }
+
+    function draw() {
+      background(0, 50);
+      noStroke();
+      fill(255);
+      for (let p of particles) {
+        circle(p.x, p.y, p.r);
+        p.x += p.dx;
+        p.y += p.dy;
+
+        if (p.x < 0 || p.x > width) p.dx *= -1;
+        if (p.y < 0 || p.y > height) p.dy *= -1;
+      }
+    }
+
+    function windowResized() {
+      resizeCanvas(window.innerWidth, window.innerHeight);
+    }
+  </script>
+
+  <!-- Content -->
+  <header class="text-center pt-20">
+    <h1 class="text-5xl font-bold text-blue-400 drop-shadow-lg">I am the glorious Mindinu</h1>
+    <p class="text-lg mt-4 text-gray-300">13 Years Old | Graphic Designer | 2 Years Experience</p>
+  </header>
+
+  <section class="max-w-4xl mx-auto mt-16 px-4">
+    <h2 class="text-3xl font-semibold text-blue-300 mb-6">About Me</h2>
+    <p class="text-gray-300 text-lg leading-relaxed">
+      Hey! I'm Nethum — a passionate graphic designer who loves turning ideas into visual stories. 
+      With 2 years of hands-on experience in creative design, I specialize in branding, posters, and digital art.
+    </p>
+  </section>
+
+  <section class="max-w-4xl mx-auto mt-16 px-4">
+    <h2 class="text-3xl font-semibold text-blue-300 mb-6">My Work</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://source.unsplash.com/random/400x300?design" class="w-full" alt="Design 1">
+        <div class="p-4 text-black">
+          <h3 class="text-lg font-bold">Project One</h3>
+          <p class="text-sm">Branding & Logo Design</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://source.unsplash.com/random/400x301?poster" class="w-full" alt="Design 2">
+        <div class="p-4 text-black">
+          <h3 class="text-lg font-bold">Project Two</h3>
+          <p class="text-sm">Creative Poster Art</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://source.unsplash.com/random/400x302?illustration" class="w-full" alt="Design 3">
+        <div class="p-4 text-black">
+          <h3 class="text-lg font-bold">Project Three</h3>
+          <p class="text-sm">Digital Illustration</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-4xl mx-auto mt-16 px-4">
+    <h2 class="text-3xl font-semibold text-blue-300 mb-6">Contact Me</h2>
+    <p class="text-gray-300">📞 070741850</p>
+    <p class="text-gray-300">📧 123456@gmail.com</p>
+    <p class="text-gray-300 mt-2">📍 Sri Lanka</p>
+  </section>
+
+  <footer class="text-center text-gray-500 text-sm mt-20 mb-6">
+    &copy; 2025 Man Nethum Matheesha. All rights reserved.
+  </footer>
+
+</body>
+</html>
